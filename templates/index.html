@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Search Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Predict the air temperature based on metrics</h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+            <input type="number" step="any" name="Process_temperature" id="Process_temperature" placeholder="Process_temperature[K]">
+            <input type="number" step="any" name="Rotational_speed" id="Rotational_speed" placeholder="Rotational_speed[rpm]">
+            <input type="number" step="any" name="Torque" id="Torque" placeholder="Torque[Nm]">
+            <input type="number" step="any" name="Tool_wear" id="Tool_wear" placeholder="Tool_wear[min]">
+            <label for="Machine_failure"> Machine_failure </label>
+            <select name="Machine_failure" id="Machine_failure">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+
+            <label for="TWF"> TWF </label>
+            <select name="TWF" id="TWF">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+
+            <label for="HDF"> HDF </label>
+            <select name="HDF" id="HDF">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+
+            <label for="PWF"> PWF </label>
+            <select name="PWF" id="PWF">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+
+            <label for="OSF"> OSF </label>
+            <select name="OSF" id="OSF">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+
+            <label for="RNF"> RNF </label>
+            <select name="RNF" id="RNF">
+  <option value="1">1</option>
+  <option value="0">0</option>
+            </select>
+            <input type="submit" value="Predict">
+        </form>
+        <form action="/report" method="POST">
+            <button type="submit" name="btn" value="report">Generate Report</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
